@@ -8,6 +8,7 @@ var nodemon     = require('gulp-nodemon');
 var standard = require('gulp-standard');
 var gutil       = require('gulp-util');
 var plumber     = require('gulp-plumber');
+// var nodeInspector = require('gulp-node-inspector');
 
 const BROWSER_SYNC_RELOAD_DELAY = 500;
 const MAIN_FILE = './app/app.js';
@@ -64,8 +65,24 @@ gulp.task('jslint', function() {
     }))
 });
 
-gulp.task('default', ['jslint','browser-sync'], function () {
-  gulp.watch('app/**/*.js', ['jslint', 'bs-reload']);
+// gulp.task('debug', function() {
+//   return gulp.src([])
+//     .pipe(nodeInspector({
+//       debugPort: 3000,
+//       webHost: '0.0.0.0',
+//       webPort: 8080,
+//       saveLiveEdit: false,
+//       preload: true,
+//       inject: true,
+//       hidden: [],
+//       stackTraceLimit: 50,
+//       sslKey: '',
+//       sslCert: ''
+//     }));
+// });
+
+gulp.task('default', ['jslint', 'browser-sync'], function () {
+  gulp.watch('app/**/*.js', ['jslint']);
   // gulp.watch('public/**/*.js',   ['js', browserSync.reload]);
   // gulp.watch('public/**/*.css',  ['css']);
   // gulp.watch('public/**/*.html', ['bs-reload']);
